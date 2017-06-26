@@ -15,11 +15,15 @@ import java.util.UUID;
 
 public class myTimer extends Timer {
     private static final String TAG = "myTimer";
+
+
     private String mTitle;
     private String mWorked;
+    private static long sSavedMS;
     private final Date mDate;
     private final int mMinutes;
     private final int mHours;
+
     UUID mID;
     CountDownTimer mCD;
 
@@ -36,24 +40,41 @@ public class myTimer extends Timer {
     }
 
     private void buildTimer(){
-        mCD = new CountDownTimer(30000, 1000) {
+        /**TODO
+         * I would add something to the onTick handler to save the progress of the timer in your class (number of milliseconds left).
+
+         In the onPause() method for the activity call cancel() on the timer.
+
+         In the onResume() method for the activity create a new timer with the saved number of milliseconds left.
+         */
+
+        mCD = new CountDownTimer(5000, 1000) {
+
+            public void pause(){
+
+            }
 
             public void onTick(long millisUntilFinished) {
-                //add the length of tick to worked. track this in MS i think is best.
+                sSavedMS += 1000;
+                //TODO add the length of tick to worked. track this in MS i think is best.
+                Log.v(TAG, "Mississippi");
                 //then convert MS later.
                 //send a broadcast?
                 //mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
             }
 
             public void onFinish() {
-
+                Log.v(TAG, "CDTimer finished");
                 //send broadcast?
+                //TODO Notification toast?
+                //TODO add completed image
+                //TODO update completed image when timer doine
                 //mTextField.setText("done!");
             }
         };
 
     }
-    private void startTimer(){
+    public void startTimer(){
         if(mCD == null)
         {
             Log.e(TAG, "Tried startTimer() before buildTimer(), called buildTimer()");
