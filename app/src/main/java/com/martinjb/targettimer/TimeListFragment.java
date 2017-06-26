@@ -81,8 +81,8 @@ public class TimeListFragment extends Fragment {
                 myTimer timer = new myTimer();
                 TimeLab.get(getActivity()).addTimer(timer);
                 //TODO
-                //Intent intent = CrimePagerActivity.newIntent(getActivity(), crime.getId());
-                //startActivity(intent);
+                Intent intent = TimePagerActivity.newIntent(getActivity(), timer.getID());
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -110,6 +110,7 @@ public class TimeListFragment extends Fragment {
         }
         @Override
         public void onClick(View view) {
+            //TODO
             //Intent intent = TimerActivity.newIntent(getActivity(), mCrime.getId());
             //startActivity(intent);
         }
