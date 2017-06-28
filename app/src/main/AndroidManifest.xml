@@ -12,10 +12,16 @@
         <activity android:name=".TimeListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AndroidTimerTaskExample"
+                android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".TimePagerActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
+
 
 </manifest>

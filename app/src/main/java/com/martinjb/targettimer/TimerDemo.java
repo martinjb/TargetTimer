@@ -4,7 +4,7 @@
  * http://www.androidhub4you.com/2013/04/countdown-demo-in-android-custom-timer.html
  */
 
-package com.martinjb.targettimer.example;
+package com.martinjb.targettimer;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -28,11 +28,11 @@ public class TimerDemo extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timer_demo);
+        //setContentView(R.layout.activity_timer_demo);
 
-        textTimer = (TextView) findViewById(R.id.textTimer);
+        //textTimer = (TextView) findViewById(R.id.textTimer);
 
-        startButton = (Button) findViewById(R.id.btnStart);
+        //startButton = (Button) findViewById(R.id.btnStart);
         startButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 startTime = SystemClock.uptimeMillis();
@@ -41,7 +41,7 @@ public class TimerDemo extends Activity {
             }
         });
 
-        pauseButton = (Button) findViewById(R.id.btnPause);
+        //pauseButton = (Button) findViewById(R.id.btnPause);
         pauseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 timeSwap += timeInMillies;
@@ -71,6 +71,3 @@ public class TimerDemo extends Activity {
     };
 
 }
-
-
-    Read more: http://www.androidhub4you.com/2013/04/countdown-demo-in-android-custom-timer.html#ixzz4l9P7Z6QE

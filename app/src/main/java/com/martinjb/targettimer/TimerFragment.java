@@ -2,10 +2,13 @@ package com.martinjb.targettimer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,20 +33,19 @@ public class TimerFragment extends Fragment{
      * @param timerID
      * @return
      */
-    /**public static CrimeFragment newInstance(UUID timerID) {
+    public static TimerFragment newInstance(UUID timerID) {
         Bundle args = new Bundle();
-        args.putSerializable(ARG_CRIME_ID, crimeId);
-        CrimeFragment fragment = new CrimeFragment();
+        args.putSerializable(ARG_TIMER_ID, timerID);
+        TimerFragment fragment = new TimerFragment();
         fragment.setArguments(args);
         return fragment;
-    }TODO*/
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.fragment_timer, container, false);
         mTitleField = (EditText) v.findViewById(R.id.timer_title);
-        mTitleField.setText (mTimer.getTitle());
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -65,13 +67,15 @@ public class TimerFragment extends Fragment{
 
             public void onClick(View v) {
                 /** onActivityResult */
-                startActivityForResult(pickContact, REQUEST_CONTACT);
-                startActivityForResult(, START_TIMER);
+                startActivityForResult(startTimer, START_TIMER);
+                Intent intent = new Intent(this, AndroidTimerTaskExample.class);
+              //  intent.putExtra("methodName","myMethod");
+              //  startActivity(intent);
             }
         });
         return v;
     }
-    final Intent startTimer = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+    final Intent startTimer = new Intent(this, AndroidTimerTaskExample.class);
 
     /**
      * I think this recieves intents.
@@ -83,6 +87,7 @@ public class TimerFragment extends Fragment{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != Activity.RESULT_OK) {
+            Log.v("Activity Result OK","onActivityResult result code not okay" );
             return;
         }
         if (requestCode == START_TIMER) {
@@ -106,10 +111,8 @@ public class TimerFragment extends Fragment{
             } finally {
                 c.close();
             }*/
-        else if (requestCode == STOP_TIMER){
-            Uri uri = FileProvider.getUriForFile(getActivity(), "com.bignerdranch.android.criminalintent.fileprovider", mPhotoFile);
-            getActivity().revokeUriPermission(uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-            updatePhotoView();
-        }
+       // else if (requestCode == STOP_TIMER){
+
+       // }
     }
 }

@@ -80,7 +80,6 @@ public class TimeListFragment extends Fragment {
                 Log.v(TAG, "clicked add@@@");
                 myTimer timer = new myTimer();
                 TimeLab.get(getActivity()).addTimer(timer);
-                //TODO
                 Intent intent = TimePagerActivity.newIntent(getActivity(), timer.getID());
                 startActivity(intent);
                 return true;

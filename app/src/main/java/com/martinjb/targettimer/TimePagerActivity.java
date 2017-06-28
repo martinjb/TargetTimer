@@ -31,8 +31,10 @@ public class TimePagerActivity extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer_pager);
+
         UUID timerID = (UUID) getIntent().getSerializableExtra(EXTRA_TIMER_ID);
         mViewPager = (ViewPager) findViewById(R.id.timer_view_pager);
+
         mTimers = TimeLab.get(this).getTimers();
         FragmentManager fragmentManager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
@@ -48,7 +50,7 @@ public class TimePagerActivity extends AppCompatActivity {
         });
 
         for (int i = 0; i < mTimers.size(); i++){
-            if (mTimers.get(i).getID().equals(timerID);
+            if (mTimers.get(i).getID().equals(timerID));
             {
                 mViewPager.setCurrentItem(i);
                 break;
